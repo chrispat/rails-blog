@@ -38,3 +38,4 @@ https://render.com/docs/deploy-rails#update-your-app-for-render
 
 ## Heroku
 https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
+https://scottbartell.com/2020/01/22/automating-rails-database-migrations-on-heroku/
