@@ -24,3 +24,13 @@ This is a [Ruby on Rails](https://rubyonrails.org/) blog that connects to a Rail
 This app was generated with the `rails new` command and following the getting
 [getting started](https://guides.rubyonrails.org/getting_started.html) guide.
 Read more about Rails on their [official website](https://rubyonrails.org/)
+
+
+## Local Dev Setup
+Had to run export RAILS_ENV=test && bin/rails db:prepare in order to get my test database setup to run tests.  Would be nice if this just happend when I run the test command
+
+Testing - https://edgeapi.rubyonrails.org/classes/ActionDispatch/SystemTestCase.html
+
+
+## Render
+https://render.com/docs/deploy-rails#update-your-app-for-render

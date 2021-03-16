@@ -34,6 +34,10 @@ RUN curl -sSLo doctl.tar.gz https://github.com/digitalocean/doctl/releases/downl
     && tar xf doctl.tar.gz \
     && sudo mv doctl /usr/local/bin
 
+# Install Heroku CLI
+RUN curl https://cli-assets.heroku.com/install.sh | sudo sh
+
+
 # Install GH cli
 RUN export DEBIAN_FRONTEND=noninteractive \
     && sudo apt-get update \
@@ -41,4 +45,19 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \ 
     && sudo apt-add-repository https://cli.github.com/packages \
     && sudo apt-get update \
-    && sudo apt-get -y install --no-install-recommends gh
+    && sudo apt-get -y install --no-install-recommends gh 
+
+# Install phantomjs
+RUN apt-get update \
+      && apt-get install -y --no-install-recommends \
+          ca-certificates \
+          bzip2 \
+          libfontconfig \
+      && apt-get clean \
+      && rm -rf /var/lib/apt/lists/*
+  
+RUN   mkdir /tmp/phantomjs \
+      && curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
+              | tar -xj --strip-components=1 -C /tmp/phantomjs \
+      && cd /tmp/phantomjs \
+      && mv bin/phantomjs /usr/local/bin 

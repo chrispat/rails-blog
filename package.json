@@ -10,6 +10,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "playwright": "^1.9.2",
     "webpack-dev-server": "^3.11.2"
   }
 }
