@@ -60,4 +60,4 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       
-      - run: doctl apps create-deployment rails-blog
+      - run: doctl apps create-deployment 38a39e7b-7b12-4f80-b13a-20c74e5a7f1d
