@@ -34,3 +34,7 @@ Testing - https://edgeapi.rubyonrails.org/classes/ActionDispatch/SystemTestCase.
 
 ## Render
 https://render.com/docs/deploy-rails#update-your-app-for-render
+
+
+## Heroku
+https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
