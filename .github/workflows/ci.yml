@@ -45,3 +45,18 @@ jobs:
       run: |
         bin/rails db:prepare
         bin/rails test
+
+  deploy:
+    if: github.ref == 'master' && github.event_name == 'push'
+    needs: test
+    environment: 
+      name: do-production
+      url: https://rails-blog-et5u6.ondigitalocean.app
+
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      
+      - run: doctl apps create-deployment rails-blog
