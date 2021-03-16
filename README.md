@@ -10,7 +10,7 @@ This is a [Ruby on Rails](https://rubyonrails.org/) blog that connects to a Rail
 - Rails
 - Postgres
 
-## 💁‍♀️ How to use
+## 💁‍♀️ How to use with Railway
 
 - [Create a Railway project with the Postgres plugin](https://railway.app/project?plugins=postgresql)
 - Connect to your Railway project with `railway init`
@@ -25,9 +25,26 @@ This app was generated with the `rails new` command and following the getting
 [getting started](https://guides.rubyonrails.org/getting_started.html) guide.
 Read more about Rails on their [official website](https://rubyonrails.org/)
 
+## Local dev no vscode
 
-## Local Dev Setup
-Had to run export RAILS_ENV=test && bin/rails db:prepare in order to get my test database setup to run tests.  Would be nice if this just happend when I run the test command
+### Basic development
+bundle install
+yarn install
+docker-compose -f .devcontainer/docker-compose.yml up -d
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
+bin/rails db:migrate
+bin/rails server
+
+### Running tests
+export RAILS_ENV=test && bin/rails db:prepare
+bin/rails test
+
+## With VS Code/Codespaces
+Launch devcontainer
+
+
+### Tear down
+docker-compose -f .devcontainer/docker-compose.yml down
 
 Testing - https://edgeapi.rubyonrails.org/classes/ActionDispatch/SystemTestCase.html
 
