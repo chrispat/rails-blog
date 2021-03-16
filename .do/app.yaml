@@ -1,0 +1,40 @@
+databases:
+- engine: PG
+  name: blogdb
+  num_nodes: 1
+  size: db-s-dev-database
+  version: "12"
+jobs:
+- environment_slug: ruby-on-rails
+  envs:
+  - key: DATABASE_URL
+    scope: RUN_TIME
+    value: ${blogdb.DATABASE_URL}
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: chrispat/rails-blog
+  instance_count: 1
+  instance_size_slug: basic-xs
+  kind: POST_DEPLOY
+  name: rails-blog-migrator
+  run_command: bundle exec rake db:migrate
+name: rails-blog
+region: nyc
+services:
+- environment_slug: ruby-on-rails
+  envs:
+  - key: DATABASE_URL
+    scope: RUN_TIME
+    value: ${blogdb.DATABASE_URL}
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: chrispat/rails-blog
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xs
+  name: rails-blog
+  routes:
+  - path: /
+  run_command: bundle exec puma -C config/puma.rb
